@@ -38,6 +38,7 @@ exports.VerifyLogin = async (req, res) => {
     //   expiresIn: "1h",
     // });
     let token = EncodeToken(email);
+    await userOTPService("0", email, UserModel);
     return res
       .status(200)
       .json({ success: true, message: "Valid OTP", token: token });

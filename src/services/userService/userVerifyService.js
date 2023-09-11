@@ -1,4 +1,8 @@
 const userVerifyService = async (code, email, DataModel) => {
-  return await DataModel.find({ email: email, otp: code }).count("total");
+  if (code === "0") {
+    return 0;
+  } else {
+    return await DataModel.find({ email: email, otp: code }).count("total");
+  }
 };
 module.exports = userVerifyService;
