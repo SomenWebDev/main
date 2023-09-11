@@ -27,7 +27,7 @@ router.get("/create-cart-list", ProductController.CreateCartList);
 router.get("/remove-cart-list", ProductController.RemoveCartList);
 // User
 router.get("/user-login/:email", UserController.UserLogin);
-router.get("/verify-login", UserController.VerifyLogin);
+router.get("/verify-login/:email/:otp", UserController.VerifyLogin);
 router.get("/logout", UserController.LogOut);
 // Profile
 router.get(
