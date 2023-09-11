@@ -3,6 +3,8 @@ const UserModel = require("../models/UserModel");
 const userOTPService = require("../services/userService/userOtpService");
 const userVerifyService = require("../services/userService/userVerifyService");
 const jwt = require("jsonwebtoken");
+const { EncodeToken } = require("../services/userService/tokenHelper");
+
 const success = "success"; // Define success as a string
 const failed = "failed";
 
@@ -32,9 +34,10 @@ exports.VerifyLogin = async (req, res) => {
 
   let verify = await userVerifyService(otp, email, UserModel);
   if (verify === 1) {
-    let token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    // let token = jwt.sign({ email: email }, process.env.JWT_SECRET, {
+    //   expiresIn: "1h",
+    // });
+    let token = EncodeToken(email);
     return res
       .status(200)
       .json({ success: true, message: "Valid OTP", token: token });

@@ -2,7 +2,9 @@ exports.CreateProfile = async (req, res) => {
   return res.status(200).json({ success: true, message: "CreateProfile" });
 };
 exports.ReadProfile = async (req, res) => {
-  return res.status(200).json({ success: true, message: "ReadProfile" });
+  let email = req.headers.email;
+
+  return res.status(200).json({ success: true, message: email });
 };
 exports.UpdateProfile = async (req, res) => {
   return res.status(200).json({ success: true, message: "UpdateProfile" });
